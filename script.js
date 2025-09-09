@@ -77,20 +77,6 @@ function showMessage(message, type) {
     }, 3000);
 }
 
-// Load Instagram embed script
-function loadInstagramEmbed() {
-    if (!window.instgrm) {
-        const script = document.createElement('script');
-        script.async = true;
-        script.src = '//www.instagram.com/embed.js';
-        document.body.appendChild(script);
-    }
-}
-
-// Initialize Instagram embed when page loads
-document.addEventListener('DOMContentLoaded', function() {
-    loadInstagramEmbed();
-});
 
 
 // Smooth scrolling for navigation links
