@@ -43,33 +43,39 @@ body {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .nav-logo img {
-    height: 50px;
-    width: 50px;
+    height: 35px;
+    width: 35px;
     border-radius: 50%;
+    object-fit: contain;
 }
 
 .nav-logo h2 {
     color: #1E3A5F;
-    font-weight: 700;
-    font-size: 1.5rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 0;
+    white-space: nowrap;
 }
 
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: 2.5rem;
+    align-items: center;
 }
 
 .nav-link {
     text-decoration: none;
     color: #333;
     font-weight: 500;
+    font-size: 0.95rem;
     transition: color 0.3s ease;
     position: relative;
+    padding: 0.5rem 0;
 }
 
 .nav-link:hover {
@@ -585,6 +591,15 @@ body {
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
+    }
+
+    .nav-logo h2 {
+        font-size: 1rem;
+    }
+
+    .nav-logo img {
+        height: 30px;
+        width: 30px;
     }
 
     .nav-menu {
