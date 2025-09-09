@@ -261,10 +261,10 @@ body {
 }
 
 .hero-logo {
-    max-width: 400px;
+    max-width: 500px;
     width: 100%;
     height: auto;
-    opacity: 0.95;
+    opacity: 1;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
     transition: transform 0.3s ease;
     object-fit: contain;
@@ -657,7 +657,7 @@ body {
     }
 
     .hero-logo {
-        max-width: 300px;
+        max-width: 350px;
         width: 100%;
     }
 
@@ -711,7 +711,7 @@ body {
     }
 
     .hero-logo {
-        max-width: 280px;
+        max-width: 320px;
         width: 100%;
     }
 }
