@@ -13,50 +13,6 @@ document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', 
     navMenu.classList.remove('active');
 }));
 
-// Location Data Storage (simplified for Instagram updates)
-let currentLocation = {
-    name: "Not currently parked",
-    isOpen: false
-};
-
-// Update location display
-function updateLocationDisplay() {
-    const statusIndicator = document.getElementById('statusIndicator');
-    const statusText = document.getElementById('statusText');
-    const locationText = document.getElementById('locationText');
-
-    if (currentLocation.isOpen) {
-        statusIndicator.classList.add('open');
-        statusText.textContent = 'Currently Open';
-    } else {
-        statusIndicator.classList.remove('open');
-        statusText.textContent = 'Currently Closed';
-    }
-
-    locationText.textContent = currentLocation.name;
-}
-
-// Location update form
-document.getElementById('locationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('locationName').value;
-    const isOpen = document.getElementById('isOpen').value === 'true';
-
-    if (name) {
-        currentLocation = { name, isOpen };
-        updateLocationDisplay();
-        saveLocationData();
-        
-        // Show success message
-        showMessage('Location updated successfully!', 'success');
-        
-        // Clear form
-        this.reset();
-    } else {
-        showMessage('Please fill in the location name.', 'error');
-    }
-});
 
 // Notification signup form
 document.getElementById('notificationForm').addEventListener('submit', function(e) {
@@ -134,35 +90,8 @@ function loadInstagramEmbed() {
 // Initialize Instagram embed when page loads
 document.addEventListener('DOMContentLoaded', function() {
     loadInstagramEmbed();
-    
-    // Load saved location data
-    const savedLocation = localStorage.getItem('currentLocation');
-    if (savedLocation) {
-        currentLocation = JSON.parse(savedLocation);
-        updateLocationDisplay();
-    }
 });
 
-// Save location data
-function saveLocationData() {
-    localStorage.setItem('currentLocation', JSON.stringify(currentLocation));
-}
-
-// Notify subscribers function
-function notifySubscribers() {
-    const subscribers = JSON.parse(localStorage.getItem('locationSubscribers') || '[]');
-    const locationSubscribers = subscribers.filter(sub => 
-        sub.notifications.includes('location')
-    );
-    
-    console.log(`Notifying ${locationSubscribers.length} subscribers about location update:`, currentLocation);
-    
-    // In a real app, you would send emails or push notifications here
-    // For demo purposes, we'll just log to console
-    locationSubscribers.forEach(subscriber => {
-        console.log(`Email to ${subscriber.email}: Monterey Sando Co is now at ${currentLocation.name} (${currentLocation.isOpen ? 'Open' : 'Closed'})`);
-    });
-}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {

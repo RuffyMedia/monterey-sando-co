@@ -400,43 +400,6 @@ body {
     margin-bottom: 3rem;
 }
 
-.location-status {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 15px;
-    margin-bottom: 2rem;
-    text-align: center;
-}
-
-.status-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-.status-indicator i {
-    color: #e74c3c;
-    animation: pulse 2s infinite;
-}
-
-.status-indicator.open i {
-    color: #27ae60;
-}
-
-@keyframes pulse {
-    0% { opacity: 1; }
-    50% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-.current-location {
-    font-size: 1.1rem;
-    color: #333;
-}
 
 
 /* Notification Signup */
@@ -537,20 +500,6 @@ body {
     display: block;
 }
 
-/* Admin Panel */
-.admin-panel {
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 15px;
-    margin-top: 2rem;
-    border: 2px dashed #6E8B3D;
-}
-
-.admin-panel h3 {
-    color: #6E8B3D;
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
 
 .form-group {
     margin-bottom: 1.5rem;
