@@ -114,9 +114,12 @@ body {
     color: white;
     padding: 120px 0 80px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
+    flex-direction: column;   /* stack logo & text vertically */
+    align-items: center;      /* center horizontally */
+    justify-content: center;  /* center vertically if full height */
+    text-align: center;       /* center the text */
+    min-height: 100vh;        /* full screen height */
+    gap: 20px;                /* spacing between logo and text */
     position: relative;
     overflow: hidden;
 }
@@ -132,26 +135,19 @@ body {
     opacity: 0.3;
 }
 
-.hero-content {
-    flex: 1;
-    max-width: 400px;
-    margin-right: 0.5rem;
-    position: relative;
-    z-index: 2;
-    padding: 2rem 0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.hero .logo {
+    height: 120px;
+    width: 120px;
+    border-radius: 50%;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
 }
 
-.hero-center {
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 0.5rem;
+.hero-text {
+    text-align: center;
     z-index: 2;
+    position: relative;
 }
 
 .hero h1 {
@@ -174,7 +170,7 @@ body {
     color: white;
 }
 
-.hero-buttons {
+.buttons {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
@@ -220,34 +216,7 @@ body {
     transform: translateY(-2px);
 }
 
-.hero-image {
-    flex: 1;
-    text-align: center;
-    font-size: 15rem;
-    opacity: 1;
-    margin-left: 0.5rem;
-    position: relative;
-    z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    min-height: 400px;
-}
 
-.hero-logo {
-    max-width: 500px;
-    width: 100%;
-    height: auto;
-    opacity: 1;
-    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
-    transition: transform 0.3s ease;
-    object-fit: contain;
-}
-
-.hero-logo:hover {
-    transform: scale(1.05);
-}
 
 /* Menu Section */
 .menu {
