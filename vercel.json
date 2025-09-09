@@ -1,0 +1,43 @@
+{
+  "functions": {
+    "app/api/**/*.js": {
+      "maxDuration": 30
+    }
+  },
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    }
+  ],
+  "security": {
+    "skewProtection": {
+      "enabled": true,
+      "rateLimit": {
+        "requests": 100,
+        "window": "1m"
+      },
+      "botProtection": true,
+      "geographicFiltering": {
+        "enabled": false
+      }
+    }
+  }
+}
