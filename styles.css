@@ -249,7 +249,7 @@ body {
     flex: 1;
     text-align: center;
     font-size: 15rem;
-    opacity: 0.2;
+    opacity: 1;
     margin-right: 50px;
     position: relative;
     z-index: 2;
