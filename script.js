@@ -163,3 +163,111 @@ window.addEventListener('load', function() {
         });
     }
 });
+
+// Basic Security Measures (Free Plan Compatible)
+// Rate limiting for form submissions (client-side)
+const formSubmissionTracker = {
+    submissions: new Map(),
+    maxSubmissions: 5, // Max 5 submissions per minute per IP
+    windowMs: 60000 // 1 minute window
+};
+
+function checkRateLimit(identifier) {
+    const now = Date.now();
+    const userSubmissions = formSubmissionTracker.submissions.get(identifier) || [];
+    
+    // Remove old submissions outside the window
+    const recentSubmissions = userSubmissions.filter(time => now - time < formSubmissionTracker.windowMs);
+    
+    if (recentSubmissions.length >= formSubmissionTracker.maxSubmissions) {
+        console.warn('Rate limit exceeded for:', identifier);
+        return false;
+    }
+    
+    // Add current submission
+    recentSubmissions.push(now);
+    formSubmissionTracker.submissions.set(identifier, recentSubmissions);
+    return true;
+}
+
+// Basic bot detection (simple heuristics)
+function detectBot() {
+    const userAgent = navigator.userAgent.toLowerCase();
+    const botPatterns = [
+        'bot', 'crawler', 'spider', 'scraper', 'curl', 'wget',
+        'python', 'java', 'php', 'ruby', 'perl'
+    ];
+    
+    return botPatterns.some(pattern => userAgent.includes(pattern));
+}
+
+// Log suspicious activity
+if (detectBot()) {
+    console.log('Bot detected, limiting functionality');
+    // You could disable certain features for bots here
+}
+
+// Basic DDoS protection (client-side)
+let requestCount = 0;
+const maxRequests = 100; // Max 100 requests per minute
+const requestWindow = 60000; // 1 minute
+
+setInterval(() => {
+    requestCount = 0; // Reset counter every minute
+}, requestWindow);
+
+function checkRequestLimit() {
+    if (requestCount > maxRequests) {
+        console.warn('Too many requests detected');
+        return false;
+    }
+    requestCount++;
+    return true;
+}
+
+// Monitor for suspicious behavior
+let clickCount = 0;
+let lastClickTime = 0;
+
+document.addEventListener('click', function(e) {
+    const now = Date.now();
+    
+    // Reset counter if more than 1 second between clicks
+    if (now - lastClickTime > 1000) {
+        clickCount = 0;
+    }
+    
+    clickCount++;
+    lastClickTime = now;
+    
+    // Alert if too many rapid clicks (potential bot)
+    if (clickCount > 10) {
+        console.warn('Suspicious rapid clicking detected');
+        trackEvent('suspicious_activity', {
+            type: 'rapid_clicking',
+            click_count: clickCount
+        });
+    }
+});
+
+// Basic content security
+function sanitizeInput(input) {
+    return input
+        .replace(/<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi, '') // Remove scripts
+        .replace(/javascript:/gi, '') // Remove javascript: URLs
+        .replace(/on\w+\s*=/gi, ''); // Remove event handlers
+}
+
+// Monitor console for errors (potential attacks)
+const originalError = console.error;
+console.error = function(...args) {
+    // Log potential security issues
+    if (args.some(arg => typeof arg === 'string' && 
+        (arg.includes('XSS') || arg.includes('injection') || arg.includes('attack')))) {
+        trackEvent('security_alert', {
+            type: 'console_error',
+            message: args.join(' ')
+        });
+    }
+    originalError.apply(console, args);
+};
