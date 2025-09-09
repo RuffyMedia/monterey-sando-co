@@ -34,9 +34,6 @@ export default function Navigation() {
             <Link href="/#location" className="text-ocean-blue hover:text-artichoke-green transition-colors">
               Find Us
             </Link>
-            <Link href="/#instagram" className="text-ocean-blue hover:text-artichoke-green transition-colors">
-              Instagram
-            </Link>
             <Link href="/#contact" className="text-ocean-blue hover:text-artichoke-green transition-colors">
               Contact
             </Link>
@@ -65,9 +62,6 @@ export default function Navigation() {
               </Link>
               <Link href="/#location" className="text-ocean-blue hover:text-artichoke-green transition-colors">
                 Find Us
-              </Link>
-              <Link href="/#instagram" className="text-ocean-blue hover:text-artichoke-green transition-colors">
-                Instagram
               </Link>
               <Link href="/#contact" className="text-ocean-blue hover:text-artichoke-green transition-colors">
                 Contact
