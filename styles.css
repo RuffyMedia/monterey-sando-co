@@ -160,6 +160,7 @@ body {
     padding: 120px 0 80px;
     display: flex;
     align-items: center;
+    justify-content: center;
     min-height: 100vh;
     position: relative;
     overflow: hidden;
@@ -178,12 +179,15 @@ body {
 
 .hero-content {
     flex: 1;
-    max-width: 600px;
-    margin-left: 50px;
+    max-width: 500px;
+    margin-right: 2rem;
     position: relative;
     z-index: 2;
     padding: 2rem 0;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .hero h1 {
@@ -257,7 +261,7 @@ body {
     text-align: center;
     font-size: 15rem;
     opacity: 1;
-    margin-right: 50px;
+    margin-left: 2rem;
     position: relative;
     z-index: 2;
     display: flex;
