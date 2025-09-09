@@ -140,13 +140,6 @@ export default function MenuSection() {
             </div>
           </div>
 
-          {/* Combo Deal */}
-          <div className="bg-gradient-to-r from-artichoke-green to-wine-burgundy text-white p-8 rounded-2xl text-center">
-            <h3 className="text-3xl font-bold mb-4">🍽️ Combo Deal</h3>
-            <p className="text-xl mb-2"><strong>Any Sando + Side + Drink</strong></p>
-            <p className="text-4xl font-bold mb-4">$20–$22</p>
-            <p className="text-sm opacity-90 italic">Makes ordering easy for tourists and raises average ticket price!</p>
-          </div>
         </div>
       </section>
 
