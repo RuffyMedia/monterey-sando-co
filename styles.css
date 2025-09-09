@@ -179,8 +179,8 @@ body {
 
 .hero-content {
     flex: 1;
-    max-width: 500px;
-    margin-right: 2rem;
+    max-width: 400px;
+    margin-right: 1rem;
     position: relative;
     z-index: 2;
     padding: 2rem 0;
@@ -188,6 +188,15 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.hero-center {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    z-index: 2;
 }
 
 .hero h1 {
@@ -261,7 +270,7 @@ body {
     text-align: center;
     font-size: 15rem;
     opacity: 1;
-    margin-left: 2rem;
+    margin-left: 1rem;
     position: relative;
     z-index: 2;
     display: flex;
@@ -651,9 +660,15 @@ body {
     }
 
     .hero-content {
-        margin-left: 0;
-        margin-bottom: 2rem;
+        margin-right: 0;
+        margin-bottom: 1rem;
         padding: 1rem 0;
+        max-width: 100%;
+    }
+
+    .hero-center {
+        margin-bottom: 2rem;
+        padding: 0 1rem;
     }
 
     .hero h1 {
