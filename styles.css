@@ -39,6 +39,7 @@ body {
     align-items: center;
     height: 70px;
     position: relative;
+    width: 100%;
 }
 
 .nav-logo {
@@ -48,6 +49,7 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    z-index: 10;
 }
 
 .nav-logo img {
