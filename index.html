@@ -219,47 +219,29 @@
                 <div id="map"></div>
             </div>
 
-            <!-- Location Notifications Signup -->
-            <div class="notification-signup">
-                <h3>Get Location Alerts</h3>
-                <p>Sign up to receive notifications when we update our location!</p>
-                <form id="notificationForm" class="notification-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="customerName">Name:</label>
-                            <input type="text" id="customerName" placeholder="Your name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="customerEmail">Email:</label>
-                            <input type="email" id="customerEmail" placeholder="your@email.com" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="notificationPreferences">Notification Preferences:</label>
-                        <div class="checkbox-group">
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="notifications" value="location" checked>
-                                <span class="checkmark"></span>
-                                Location updates
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="notifications" value="hours">
-                                <span class="checkmark"></span>
-                                Hours changes
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" name="notifications" value="special">
-                                <span class="checkmark"></span>
-                                Special events
-                            </label>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-bell"></i>
-                        Sign Up for Alerts
-                    </button>
-                </form>
-                <div id="signupMessage" class="signup-message"></div>
+            <!-- Instagram Location Updates -->
+            <div class="instagram-location-updates">
+                <h3>Follow for Location Updates</h3>
+                <p>Get real-time location updates, hours changes, and special events by following us on Instagram!</p>
+                
+                <div class="instagram-follow-section">
+                    <a href="https://www.instagram.com/montereysandoco/" target="_blank" class="btn btn-instagram">
+                        <i class="fab fa-instagram"></i>
+                        Follow @montereysandoco
+                    </a>
+                    <p class="instagram-note">Turn on post notifications to never miss our location updates!</p>
+                </div>
+                
+                <div class="location-benefits">
+                    <h4>What you'll see on our Instagram:</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Daily location posts with exact addresses</li>
+                        <li><i class="fas fa-clock"></i> Hours updates and schedule changes</li>
+                        <li><i class="fas fa-star"></i> Special events and promotions</li>
+                        <li><i class="fas fa-utensils"></i> Fresh menu items and daily specials</li>
+                        <li><i class="fas fa-camera"></i> Behind-the-scenes food prep photos</li>
+                    </ul>
+                </div>
             </div>
 
             <!-- Location Update Form (Admin) -->
@@ -397,8 +379,33 @@
         </div>
     </footer>
 
+
     <!-- Scripts -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBay0c2s_BsBojKdz2wXT3B5O7_P-KtQY&callback=initMap" async defer></script>
+    <script src="config.js"></script>
+    <script>
+        // Load Google Maps API with the key from config
+        function loadGoogleMaps() {
+            if (CONFIG.GOOGLE_MAPS_API_KEY && CONFIG.GOOGLE_MAPS_API_KEY !== 'YOUR_GOOGLE_MAPS_API_KEY_HERE') {
+                const script = document.createElement('script');
+                script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMap`;
+                script.async = true;
+                script.defer = true;
+                document.head.appendChild(script);
+            } else {
+                console.warn('Google Maps API key not configured. Please update config.js with your API key.');
+                // Show fallback message
+                setTimeout(() => {
+                    const mapElement = document.getElementById('map');
+                    if (mapElement) {
+                        mapElement.innerHTML = '<div style="padding: 20px; text-align: center; color: #666; background: #f5f5f5; border-radius: 8px;"><i class="fas fa-map-marker-alt" style="font-size: 2em; margin-bottom: 10px; color: #ccc;"></i><br>Map unavailable - API key required<br><small>Please configure your Google Maps API key in config.js</small></div>';
+                    }
+                }, 100);
+            }
+        }
+        
+        // Load Google Maps when page loads
+        document.addEventListener('DOMContentLoaded', loadGoogleMaps);
+    </script>
     <script src="script.js"></script>
 </body>
 </html>

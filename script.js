@@ -26,6 +26,13 @@ let map;
 let marker;
 
 function initMap() {
+    // Check if Google Maps API is loaded
+    if (typeof google === 'undefined' || !google.maps) {
+        console.error('Google Maps API not loaded. Please check your API key.');
+        document.getElementById('map').innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">Map unavailable - API key required</div>';
+        return;
+    }
+
     // Default location (Monterey, CA)
     const defaultLocation = { lat: 36.6002, lng: -121.8947 };
     
