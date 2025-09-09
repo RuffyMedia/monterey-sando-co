@@ -14,68 +14,6 @@ document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', 
 }));
 
 
-// Notification signup form
-document.getElementById('notificationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('customerName').value;
-    const email = document.getElementById('customerEmail').value;
-    const notifications = Array.from(document.querySelectorAll('input[name="notifications"]:checked'))
-        .map(checkbox => checkbox.value);
-
-    if (name && email && notifications.length > 0) {
-        // In a real app, this would send data to a server
-        const signupData = {
-            name,
-            email,
-            notifications,
-            timestamp: new Date().toISOString()
-        };
-        
-        // Store in localStorage for demo purposes
-        let subscribers = JSON.parse(localStorage.getItem('locationSubscribers') || '[]');
-        subscribers.push(signupData);
-        localStorage.setItem('locationSubscribers', JSON.stringify(subscribers));
-        
-        showSignupMessage(`Thanks ${name}! You'll receive ${notifications.join(', ')} notifications.`, 'success');
-        
-        // Clear form
-        this.reset();
-        document.querySelector('input[name="notifications"][value="location"]').checked = true;
-    } else {
-        showSignupMessage('Please fill in all fields and select at least one notification type.', 'error');
-    }
-});
-
-// Show signup message
-function showSignupMessage(message, type) {
-    const messageDiv = document.getElementById('signupMessage');
-    messageDiv.textContent = message;
-    messageDiv.className = `signup-message ${type}`;
-    
-    setTimeout(() => {
-        messageDiv.style.display = 'none';
-    }, 5000);
-}
-
-// Show general message
-function showMessage(message, type) {
-    // Create temporary message element
-    const messageDiv = document.createElement('div');
-    messageDiv.className = `signup-message ${type}`;
-    messageDiv.textContent = message;
-    messageDiv.style.position = 'fixed';
-    messageDiv.style.top = '20px';
-    messageDiv.style.right = '20px';
-    messageDiv.style.zIndex = '9999';
-    messageDiv.style.maxWidth = '300px';
-    
-    document.body.appendChild(messageDiv);
-    
-    setTimeout(() => {
-        messageDiv.remove();
-    }, 3000);
-}
 
 
 
