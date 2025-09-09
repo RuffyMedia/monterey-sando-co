@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Skip to main content link for screen readers -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-left">
@@ -26,14 +29,14 @@
             <a href="#contact" class="nav-link">Contact</a>
         </div>
         
-        <div class="hamburger">
+        <button class="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
             <span class="bar"></span>
             <span class="bar"></span>
             <span class="bar"></span>
-        </div>
+        </button>
         
         <!-- Mobile Menu -->
-        <div class="nav-menu">
+        <div class="nav-menu" id="nav-menu" role="navigation" aria-label="Mobile navigation menu">
             <a href="#home" class="nav-link">Home</a>
             <a href="#menu" class="nav-link">Menu</a>
             <a href="#location" class="nav-link">Find Us</a>
@@ -42,6 +45,7 @@
     </nav>
 
     <!-- Hero Section -->
+    <main id="main-content">
     <section id="home" class="hero">
         <img src="logo.png" alt="Monterey Sando Co" class="logo" onerror="this.style.display='none'" />
 
@@ -196,8 +200,8 @@
                 <p>Get real-time location updates, hours changes, and special events by following us on Instagram!</p>
                 
                 <div class="instagram-follow-section">
-                    <a href="https://www.instagram.com/montereysandoco/" target="_blank" class="btn btn-instagram">
-                        <i class="fab fa-instagram"></i>
+                    <a href="https://www.instagram.com/montereysandoco/" target="_blank" class="btn btn-instagram" aria-label="Follow us on Instagram (opens in new tab)">
+                        <i class="fab fa-instagram" aria-hidden="true"></i>
                         Follow @montereysandoco
                     </a>
                     <p class="instagram-note">Turn on post notifications to never miss our location updates!</p>
@@ -242,6 +246,7 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
