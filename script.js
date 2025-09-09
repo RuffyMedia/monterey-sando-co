@@ -53,3 +53,38 @@ window.addEventListener('scroll', function() {
         navbar.style.backdropFilter = 'none';
     }
 });
+
+// Performance monitoring and error handling
+window.addEventListener('load', function() {
+    // Log performance metrics
+    if ('performance' in window) {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        console.log('Page load time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+    }
+    
+    // Check if critical resources loaded
+    const criticalImages = document.querySelectorAll('img[loading="eager"]');
+    criticalImages.forEach(img => {
+        if (!img.complete) {
+            console.warn('Critical image failed to load:', img.src);
+        }
+    });
+});
+
+// Error handling for external resources
+window.addEventListener('error', function(e) {
+    if (e.target.tagName === 'IMG') {
+        console.warn('Image failed to load:', e.target.src);
+        // Could implement fallback image logic here
+    }
+});
+
+// Service Worker registration for PWA capabilities (optional)
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        // Uncomment when you have a service worker file
+        // navigator.serviceWorker.register('/sw.js')
+        //     .then(registration => console.log('SW registered'))
+        //     .catch(error => console.log('SW registration failed'));
+    });
+}
