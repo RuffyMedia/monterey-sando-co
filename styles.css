@@ -180,7 +180,7 @@ body {
 .hero-content {
     flex: 1;
     max-width: 400px;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     position: relative;
     z-index: 2;
     padding: 2rem 0;
@@ -195,7 +195,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0 2rem;
+    padding: 0 0.5rem;
     z-index: 2;
 }
 
@@ -270,7 +270,7 @@ body {
     text-align: center;
     font-size: 15rem;
     opacity: 1;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
     position: relative;
     z-index: 2;
     display: flex;
