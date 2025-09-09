@@ -2,11 +2,6 @@
 // IMPORTANT: Replace these placeholder values with your actual API keys and credentials
 
 const CONFIG = {
-    // Google Maps API Key
-    // Get your API key from: https://console.cloud.google.com/google/maps-apis
-    // Make sure to restrict it to your domain for security
-    GOOGLE_MAPS_API_KEY: 'AIzaSyDBay0c2s_BsBojKdz2wXT3B5O7_P-KtQY',
-    
     // Instagram Configuration
     INSTAGRAM: {
         USERNAME: 'montereysandoco'

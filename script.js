@@ -13,59 +13,11 @@ document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', 
     navMenu.classList.remove('active');
 }));
 
-// Location Data Storage (in a real app, this would be stored in a database)
+// Location Data Storage (simplified for Instagram updates)
 let currentLocation = {
     name: "Not currently parked",
-    lat: 36.6002,
-    lng: -121.8947,
     isOpen: false
 };
-
-// Map initialization
-let map;
-let marker;
-
-function initMap() {
-    // Check if Google Maps API is loaded
-    if (typeof google === 'undefined' || !google.maps) {
-        console.error('Google Maps API not loaded. Please check your API key.');
-        document.getElementById('map').innerHTML = '<div style="padding: 20px; text-align: center; color: #666;">Map unavailable - API key required</div>';
-        return;
-    }
-
-    // Default location (Monterey, CA)
-    const defaultLocation = { lat: 36.6002, lng: -121.8947 };
-    
-    map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 15,
-        center: defaultLocation,
-        styles: [
-            {
-                featureType: 'poi',
-                elementType: 'labels',
-                stylers: [{ visibility: 'off' }]
-            }
-        ]
-    });
-
-    // Create marker
-    marker = new google.maps.Marker({
-        position: defaultLocation,
-        map: map,
-        title: currentLocation.name,
-        icon: {
-            url: 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(`
-                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="20" cy="20" r="18" fill="#27ae60" stroke="#fff" stroke-width="2"/>
-                    <path d="M20 8 L24 16 L20 20 L16 16 Z" fill="#fff"/>
-                </svg>
-            `),
-            scaledSize: new google.maps.Size(40, 40)
-        }
-    });
-
-    updateLocationDisplay();
-}
 
 // Update location display
 function updateLocationDisplay() {
@@ -82,13 +34,6 @@ function updateLocationDisplay() {
     }
 
     locationText.textContent = currentLocation.name;
-
-    // Update marker
-    if (marker) {
-        marker.setPosition({ lat: currentLocation.lat, lng: currentLocation.lng });
-        marker.setTitle(currentLocation.name);
-        map.setCenter({ lat: currentLocation.lat, lng: currentLocation.lng });
-    }
 }
 
 // Location update form
@@ -96,13 +41,12 @@ document.getElementById('locationForm').addEventListener('submit', function(e) {
     e.preventDefault();
     
     const name = document.getElementById('locationName').value;
-    const lat = parseFloat(document.getElementById('latitude').value);
-    const lng = parseFloat(document.getElementById('longitude').value);
     const isOpen = document.getElementById('isOpen').value === 'true';
 
-    if (name && !isNaN(lat) && !isNaN(lng)) {
-        currentLocation = { name, lat, lng, isOpen };
+    if (name) {
+        currentLocation = { name, isOpen };
         updateLocationDisplay();
+        saveLocationData();
         
         // Show success message
         showMessage('Location updated successfully!', 'success');
@@ -110,7 +54,7 @@ document.getElementById('locationForm').addEventListener('submit', function(e) {
         // Clear form
         this.reset();
     } else {
-        showMessage('Please fill in all fields with valid data.', 'error');
+        showMessage('Please fill in the location name.', 'error');
     }
 });
 
@@ -199,36 +143,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Save location data when updated
+// Save location data
 function saveLocationData() {
     localStorage.setItem('currentLocation', JSON.stringify(currentLocation));
 }
-
-// Update the location form submission to save data
-document.getElementById('locationForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    const name = document.getElementById('locationName').value;
-    const lat = parseFloat(document.getElementById('latitude').value);
-    const lng = parseFloat(document.getElementById('longitude').value);
-    const isOpen = document.getElementById('isOpen').value === 'true';
-
-    if (name && !isNaN(lat) && !isNaN(lng)) {
-        currentLocation = { name, lat, lng, isOpen };
-        updateLocationDisplay();
-        saveLocationData();
-        
-        // Notify subscribers (in a real app, this would send emails)
-        notifySubscribers();
-        
-        showMessage('Location updated successfully!', 'success');
-        
-        // Clear form
-        this.reset();
-    } else {
-        showMessage('Please fill in all fields with valid data.', 'error');
-    }
-});
 
 // Notify subscribers function
 function notifySubscribers() {

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monterey Sando Co - Food Truck</title>
+    <!-- Updated: Removed email signup, added Instagram focus -->
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -214,10 +215,6 @@
                 </div>
             </div>
 
-            <!-- Map Container -->
-            <div class="map-container">
-                <div id="map"></div>
-            </div>
 
             <!-- Instagram Location Updates -->
             <div class="instagram-location-updates">
@@ -251,14 +248,6 @@
                     <div class="form-group">
                         <label for="locationName">Location Name:</label>
                         <input type="text" id="locationName" placeholder="e.g., Downtown Plaza, City Park">
-                    </div>
-                    <div class="form-group">
-                        <label for="latitude">Latitude:</label>
-                        <input type="number" id="latitude" step="any" placeholder="36.6002">
-                    </div>
-                    <div class="form-group">
-                        <label for="longitude">Longitude:</label>
-                        <input type="number" id="longitude" step="any" placeholder="-121.8947">
                     </div>
                     <div class="form-group">
                         <label for="isOpen">Status:</label>
@@ -382,30 +371,6 @@
 
     <!-- Scripts -->
     <script src="config.js"></script>
-    <script>
-        // Load Google Maps API with the key from config
-        function loadGoogleMaps() {
-            if (CONFIG.GOOGLE_MAPS_API_KEY && CONFIG.GOOGLE_MAPS_API_KEY !== 'YOUR_GOOGLE_MAPS_API_KEY_HERE') {
-                const script = document.createElement('script');
-                script.src = `https://maps.googleapis.com/maps/api/js?key=${CONFIG.GOOGLE_MAPS_API_KEY}&callback=initMap`;
-                script.async = true;
-                script.defer = true;
-                document.head.appendChild(script);
-            } else {
-                console.warn('Google Maps API key not configured. Please update config.js with your API key.');
-                // Show fallback message
-                setTimeout(() => {
-                    const mapElement = document.getElementById('map');
-                    if (mapElement) {
-                        mapElement.innerHTML = '<div style="padding: 20px; text-align: center; color: #666; background: #f5f5f5; border-radius: 8px;"><i class="fas fa-map-marker-alt" style="font-size: 2em; margin-bottom: 10px; color: #ccc;"></i><br>Map unavailable - API key required<br><small>Please configure your Google Maps API key in config.js</small></div>';
-                    }
-                }, 100);
-            }
-        }
-        
-        // Load Google Maps when page loads
-        document.addEventListener('DOMContentLoaded', loadGoogleMaps);
-    </script>
     <script src="script.js"></script>
 </body>
 </html>
