@@ -7,12 +7,12 @@ const CONFIG = {
         USERNAME: 'montereysandoco'
     },
     
-    // Contact Information
-    CONTACT: {
-        PHONE: '(555) 123-SANDO',
-        EMAIL: 'hello@montereysandoco.com',
-        INSTAGRAM: '@montereysandoco'
-    }
+           // Contact Information
+           CONTACT: {
+               PHONE: '(555) 123-SANDO',
+               EMAIL: 'montereysandoco@gmail.com',
+               INSTAGRAM: '@montereysandoco'
+           }
 };
 
 // Export for use in other scripts
