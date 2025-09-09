@@ -185,12 +185,14 @@ body {
     object-fit: contain;
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.3));
     transition: transform 0.3s ease;
+    order: 1;
 }
 
 .hero-text {
     text-align: center;
     z-index: 2;
     position: relative;
+    order: 2;
 }
 
 .hero h1 {
@@ -636,6 +638,14 @@ body {
         flex-direction: column;
         text-align: center;
         padding: 100px 20px 60px;
+    }
+
+    .hero .logo {
+        order: 1;
+    }
+
+    .hero .hero-text {
+        order: 2;
     }
 
     .hero-content {
