@@ -7,12 +7,20 @@ const CONFIG = {
         USERNAME: 'montereysandoco'
     },
     
-           // Contact Information
-           CONTACT: {
-               PHONE: '(555) 123-SANDO',
-               EMAIL: 'montereysandoco@gmail.com',
-               INSTAGRAM: '@montereysandoco'
-           }
+    // Contact Information
+    CONTACT: {
+        PHONE: '(555) 123-SANDO',
+        EMAIL: 'montereysandoco@gmail.com',
+        INSTAGRAM: '@montereysandoco'
+    },
+    
+    // Analytics Configuration
+    ANALYTICS: {
+        // Replace with your actual Google Analytics Measurement ID
+        GOOGLE_ANALYTICS_ID: 'GA_MEASUREMENT_ID',
+        // Vercel Analytics is automatically enabled when deployed to Vercel
+        VERCEL_ANALYTICS: true
+    }
 };
 
 // Export for use in other scripts

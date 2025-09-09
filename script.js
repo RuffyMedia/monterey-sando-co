@@ -88,3 +88,78 @@ if ('serviceWorker' in navigator) {
         //     .catch(error => console.log('SW registration failed'));
     });
 }
+
+// Enhanced Analytics Tracking
+function trackEvent(eventName, parameters = {}) {
+    // Google Analytics 4 event tracking
+    if (typeof gtag !== 'undefined') {
+        gtag('event', eventName, parameters);
+    }
+    
+    // Vercel Analytics event tracking
+    if (typeof window.va !== 'undefined') {
+        window.va('event', eventName, parameters);
+    }
+    
+    console.log('Analytics Event:', eventName, parameters);
+}
+
+// Track navigation clicks
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        const linkText = this.textContent.trim();
+        trackEvent('navigation_click', {
+            link_text: linkText,
+            link_href: this.getAttribute('href'),
+            section: this.closest('nav') ? 'main_nav' : 'mobile_nav'
+        });
+    });
+});
+
+// Track Instagram link clicks
+document.querySelectorAll('a[href*="instagram.com"]').forEach(link => {
+    link.addEventListener('click', function() {
+        trackEvent('instagram_click', {
+            link_text: this.textContent.trim(),
+            link_href: this.getAttribute('href')
+        });
+    });
+});
+
+// Track menu item interactions (if you add hover/click events)
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('mouseenter', function() {
+        const itemName = this.querySelector('h4')?.textContent || 'Unknown Item';
+        trackEvent('menu_item_hover', {
+            item_name: itemName,
+            category: this.closest('.menu-category')?.querySelector('.category-title')?.textContent || 'Unknown'
+        });
+    });
+});
+
+// Track scroll depth
+let maxScrollDepth = 0;
+window.addEventListener('scroll', function() {
+    const scrollDepth = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    if (scrollDepth > maxScrollDepth) {
+        maxScrollDepth = scrollDepth;
+        if (maxScrollDepth % 25 === 0) { // Track at 25%, 50%, 75%, 100%
+            trackEvent('scroll_depth', {
+                depth_percentage: maxScrollDepth
+            });
+        }
+    }
+});
+
+// Track page load time
+window.addEventListener('load', function() {
+    if ('performance' in window) {
+        const perfData = performance.getEntriesByType('navigation')[0];
+        const loadTime = Math.round(perfData.loadEventEnd - perfData.loadEventStart);
+        
+        trackEvent('page_load_time', {
+            load_time_ms: loadTime,
+            page_title: document.title
+        });
+    }
+});

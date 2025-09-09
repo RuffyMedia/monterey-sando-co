@@ -323,6 +323,38 @@
     }
     </script>
 
+    <!-- Analytics -->
+    <!-- Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
+    
+    <!-- Google Analytics 4 -->
+    <script>
+        // Load Google Analytics only if GA ID is configured
+        if (typeof CONFIG !== 'undefined' && CONFIG.ANALYTICS && CONFIG.ANALYTICS.GOOGLE_ANALYTICS_ID && CONFIG.ANALYTICS.GOOGLE_ANALYTICS_ID !== 'GA_MEASUREMENT_ID') {
+            (function() {
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=' + CONFIG.ANALYTICS.GOOGLE_ANALYTICS_ID;
+                document.head.appendChild(script);
+                
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', CONFIG.ANALYTICS.GOOGLE_ANALYTICS_ID, {
+                    page_title: 'Monterey Sando Co - Food Truck',
+                    page_location: window.location.href,
+                    custom_map: {
+                        'custom_parameter_1': 'food_truck',
+                        'custom_parameter_2': 'monterey_bay'
+                    }
+                });
+            })();
+        }
+    </script>
+
     <!-- Scripts -->
     <script src="config.js"></script>
     <script src="script.js?v=2"></script>
