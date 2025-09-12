@@ -5,8 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monterey Sando Co - Food Truck</title>
     <meta name="description" content="Fresh, delicious sandwiches on wheels! Find Monterey Sando Co food truck locations, view our menu, and follow us on Instagram for real-time updates.">
-    <meta name="keywords" content="food truck, sandwiches, Monterey Bay, California, fresh food, mobile restaurant">
+    <meta name="keywords" content="food truck, sandwiches, Monterey Bay, California, fresh food, mobile restaurant, Cannery Row, Castroville, artichoke, tri-tip, calamari, rockfish, brisket, local food, Monterey County">
     <meta name="author" content="Monterey Sando Co">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <link rel="canonical" href="https://montereysandoco.com/">
+    <meta name="geo.region" content="US-CA">
+    <meta name="geo.placename" content="Monterey">
+    <meta name="geo.position" content="36.6002;-121.8947">
+    <meta name="ICBM" content="36.6002, -121.8947">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -29,8 +37,17 @@
     <!-- Web App Manifest -->
     <link rel="manifest" href="manifest.json">
     
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo.png">
+    <link rel="shortcut icon" href="favicon.ico">
+    
     <!-- Apple Touch Icons -->
     <link rel="apple-touch-icon" href="logo.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="logo.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="logo.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="Monterey Sando Co">
@@ -62,7 +79,7 @@
         </div>
 
         <div class="logo">
-            <img src="logo.png" alt="Monterey Sando Co" loading="eager" onerror="this.style.display='none'">
+            <img src="logo.png" alt="Monterey Sando Co - Food Truck Logo" loading="eager" width="120" height="120" onerror="this.style.display='none'">
         </div>
 
         <div class="nav-right">
@@ -88,7 +105,7 @@
     <!-- Hero Section -->
     <main id="main-content">
     <section id="home" class="hero">
-        <img src="logo.png" alt="Monterey Sando Co" class="logo" loading="eager" onerror="this.style.display='none'" />
+        <img src="logo.png" alt="Monterey Sando Co - Fresh Sandwiches on Wheels" class="logo" loading="eager" width="200" height="200" onerror="this.style.display='none'" />
 
         <div class="hero-text">
             <h1>Monterey Sando Co</h1>
@@ -297,6 +314,40 @@
     </footer>
 
 
+    <!-- Breadcrumb Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://montereysandoco.com/"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Menu",
+                "item": "https://montereysandoco.com/#menu"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Find Us",
+                "item": "https://montereysandoco.com/#location"
+            },
+            {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Contact",
+                "item": "https://montereysandoco.com/#contact"
+            }
+        ]
+    }
+    </script>
+
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
@@ -319,7 +370,71 @@
         "sameAs": [
             "https://www.instagram.com/montereysandoco/"
         ],
-        "openingHours": "Mo-Su 11:00-19:00"
+        "openingHours": "Mo-Su 11:00-19:00",
+        "image": "https://montereysandoco.com/logo.png",
+        "logo": "https://montereysandoco.com/logo.png",
+        "menu": [
+            {
+                "@type": "MenuItem",
+                "name": "Cannery Row Tri-Tip",
+                "description": "Santa Maria–style tri-tip, salsa roja, grilled garlic bread",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "15",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@type": "MenuItem",
+                "name": "Wharf Calamari Sando",
+                "description": "Oven-roasted calamari rings, lemon-garlic aioli, pickled onions, fresh arugula",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "16",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@type": "MenuItem",
+                "name": "Monterey Bay Melt",
+                "description": "Rockfish filet, cheddar, tartar sauce, shredded lettuce on sourdough",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "15",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@type": "MenuItem",
+                "name": "Castroville Veggie Panini",
+                "description": "Grilled artichoke hearts, mozzarella, basil pesto, roasted red peppers",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "13",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@type": "MenuItem",
+                "name": "Wine Country Turkey & Brie",
+                "description": "Roast turkey, brie, fig jam, arugula on a soft roll — made to pair with local Pinot",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "14",
+                    "priceCurrency": "USD"
+                }
+            },
+            {
+                "@type": "MenuItem",
+                "name": "BBQ Brisket & Slaw Hoagie",
+                "description": "Slow-cooked brisket, tangy BBQ sauce, crunchy coleslaw",
+                "offers": {
+                    "@type": "Offer",
+                    "price": "15",
+                    "priceCurrency": "USD"
+                }
+            }
+        ]
     }
     </script>
 
